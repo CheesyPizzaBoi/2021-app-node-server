@@ -1,0 +1,15 @@
+{
+  "name": "server",
+  "version": "14.17.3",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.17.1",
+    "twilio": "^3.66.1"
+  }
+}
