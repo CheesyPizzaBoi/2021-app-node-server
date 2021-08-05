@@ -10,6 +10,14 @@ const port = "3000";
 app.use(cors());
 app.use(express.json());
 
+
+app.get('/', (req,res) => {
+    res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
+})
+
+/*
+app.use(express.json());
+
 const accountSid = 'AC3f73df2a47a9687e623c5503bf103a77'; 
 const authToken = '8d8931ac36e40b65f738e13b9d35535c'; 
 const client = require('twilio')(accountSid, authToken); 
@@ -43,6 +51,6 @@ app.post('/sms', (req, res) => {
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 
  
-
+*/
 
 app.listen(port);
