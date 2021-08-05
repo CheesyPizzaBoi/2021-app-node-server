@@ -23,7 +23,7 @@ app.all("/*", function(req, res, next){
   });
 
 
-app.post('https://app-2021-server.herokuapp.com/sms', (req, res) => {
+app.post('/sms', (req, res) => {
     client.messages 
       .create({ 
          body: req.body.message,
@@ -36,4 +36,4 @@ app.post('https://app-2021-server.herokuapp.com/sms', (req, res) => {
  
 
 
-app.listen(process.env.PORT || 8080);
+app.listen(port);
