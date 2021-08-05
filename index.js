@@ -2,8 +2,12 @@ const express = require('express');
 
 const app = express();
 
+const cors = require('cors');
+
+
 const port = "https://app-2021-server.herokuapp.com/";
 
+app.use(cors());
 app.use(express.json());
 
 const accountSid = 'AC3f73df2a47a9687e623c5503bf103a77'; 
