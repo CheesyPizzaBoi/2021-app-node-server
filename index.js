@@ -23,7 +23,7 @@ app.all("/*", function(req, res, next){
   });
 
 
-app.post('/sms', (req, res) => {
+app.post('https://app-2021-server.herokuapp.com/sms', (req, res) => {
     client.messages 
       .create({ 
          body: req.body.message,
@@ -36,6 +36,4 @@ app.post('/sms', (req, res) => {
  
 
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
+app.listen(process.env.PORT || 8080);
