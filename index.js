@@ -99,7 +99,10 @@ app.get("/", (req, res) => {
 
 
 app.post('/sms', (req, res) => {
-    
+    app.get("/", (req, res) => {
+        res.set('Access-Control-Allow-Origin', '*');
+        res.sendFile(__dirname + "/index.html");
+    })
     client.messages 
       .create({ 
          body: req.body.message,
