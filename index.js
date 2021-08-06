@@ -37,6 +37,7 @@ app.all("/*", function(req, res, next){
 
 
 app.post('/sms', (req, res) => {
+    response.set('Access-Control-Allow-Origin', '*');
     client.messages 
       .create({ 
          body: req.body.message,
