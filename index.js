@@ -15,6 +15,11 @@ app.use(express.json());
 
 app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 
+app.get("/", (req, res) => {
+    response.set('Access-Control-Allow-Origin', '*');
+    res.sendFile(__dirname + "/index.html");
+})
+
 app.use(express.json());
 
 const accountSid = 'AC3f73df2a47a9687e623c5503bf103a77'; 
