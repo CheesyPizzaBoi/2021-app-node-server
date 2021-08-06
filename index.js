@@ -5,7 +5,7 @@ const app = express();
 const cors = require('cors');
 
 
-const port = process.env.PORT || 5000;
+const port = "https://app-2021-server.herokuapp.com";
 
 app.use(cors());
 app.use(express.json());
