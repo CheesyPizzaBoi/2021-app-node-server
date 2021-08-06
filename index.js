@@ -12,8 +12,7 @@ app.use(express.json());
 
 
 
-app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
-/*
+
 app.use(express.json());
 
 const accountSid = 'AC3f73df2a47a9687e623c5503bf103a77'; 
@@ -46,9 +45,9 @@ app.post('/sms', (req, res) => {
       .done();
 });
 
-app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
+
 
  
-*/
+
 
 app.listen(port);
