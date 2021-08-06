@@ -93,7 +93,7 @@ app.all("/*", function(req, res, next){
 
 
 app.get("/", (req, res) => {
-    
+    res.set('Access-Control-Allow-Origin', '*');
     res.sendFile(__dirname + "/index.html");
 });
 
