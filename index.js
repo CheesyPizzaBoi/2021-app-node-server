@@ -92,10 +92,18 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 })
 
-app.get("/sms", (req, res) => {
+
+app.post('/sms', (req, res) => {
   res.set('Access-Control-Allow-Origin', '*');
-  res.sendFile(__dirname + "/about.html");
-})
+  client.messages 
+    .create({ 
+       body: req.body.message,
+       messagingServiceSid: 'MGda7af18591f0c237763fb5cf2be37db5',        
+       to: `+1${req.body.number}`,
+     }) 
+    .then(message => console.log("Message Sent!")) 
+    .done();
+});
 
 
 app.listen(port, () => {
