@@ -92,6 +92,12 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 })
 
+app.get("/sms", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.sendFile(__dirname + "/about.html");
+})
+
+
 app.listen(port, () => {
   console.log(`App listening at http://localhost:${port}`);
 });
