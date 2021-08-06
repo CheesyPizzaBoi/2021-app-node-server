@@ -8,6 +8,7 @@ const cors = require('cors');
 const port = "https://app-2021-server.herokuapp.com";
 
 app.use(cors());
+xhr.withCredentials = false;
 app.use(express.json());
 
 
