@@ -11,10 +11,8 @@ app.use(cors());
 app.use(express.json());
 
 
-app.get('/', (req,res) => {
-    res.send('Welcome to Daily Code Buffer in Heroku Auto Deployment!!');
-})
 
+app.get("/", (req, res) => res.sendFile(__dirname + "/index.html"));
 /*
 app.use(express.json());
 
