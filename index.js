@@ -68,21 +68,20 @@ const express = require('express');
 
 const app = express();
 
-const port = process.env.PORT || 5000;
+const port = 3000;
 
 app.use(express.json());
 
 const accountSid = 'AC3f73df2a47a9687e623c5503bf103a77'; 
 const authToken = 'c6fb65e1fc2b06f9a69ad24fbcd74ba2'; 
-const client = require('twilio')(accountSid, authToken);
+const client = require('twilio')(accountSid, authToken); 
 
 
 const bodyParser = require('body-parser');
-const { stringify } = require('@angular/compiler/src/util');
+
 
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
-
 
 app.all("/*", function(req, res, next){
     res.header('Access-Control-Allow-Origin', '*');
@@ -92,17 +91,7 @@ app.all("/*", function(req, res, next){
   });
 
 
-app.get("/", (req, res) => {
-    res.set('Access-Control-Allow-Origin', '*');
-    res.sendFile(__dirname + "/index.html");
-});
-
-
 app.post('/sms', (req, res) => {
-    app.get("/", (req, res) => {
-        res.set('Access-Control-Allow-Origin', '*');
-        res.sendFile(__dirname + "/index.html");
-    })
     client.messages 
       .create({ 
          body: req.body.message,
@@ -114,12 +103,6 @@ app.post('/sms', (req, res) => {
 });
 
 
-
-
-
  
 
 
-app.listen(port, () => {
-  console.log(`App listening at http://localhost:${port}`);
-});
