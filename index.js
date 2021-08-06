@@ -85,16 +85,19 @@ const bodyParser = require('body-parser');
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({extended: true}));
 
-
+app.all("/*", function(req, res, next){
+  res.header('Access-Control-Allow-Origin', '*');
+  res.header('Access-Control-Allow-Methods', '*');
+  res.header('Access-Control-Allow-Headers', '*');
+  next();
+});
 
 app.get("/", (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
   res.sendFile(__dirname + "/index.html");
 })
 
 
 app.post('/sms', (req, res) => {
-  res.set('Access-Control-Allow-Origin', '*');
   client.messages 
     .create({ 
        body: req.body.message,
