@@ -68,7 +68,7 @@ const express = require('express');
 
 const app = express();
 
-const port = "https://app-2021-server.herokuapp.com";
+const port = process.env.PORT || 5000;
 
 app.use(express.json());
 
