@@ -93,6 +93,9 @@ app.all("/*", function(req, res, next){
 });
 
 app.get("/", (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', '*');
+  res.set('Access-Control-Allow-Headers', '*');
   res.sendFile(__dirname + "/index.html");
 })
 
@@ -100,6 +103,9 @@ const schedule = require('node-schedule');
 
 
 app.post('/sms', (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', '*');
+  res.set('Access-Control-Allow-Headers', '*');
   let time = {
     alarmTime: req.body.alarmTime
   }
