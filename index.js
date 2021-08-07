@@ -64,6 +64,10 @@ app.listen(port, () => {
 
 */
 
+
+
+//here
+
 const express = require('express');
 
 const app = express();
@@ -100,6 +104,15 @@ app.get("/", (req, res) => {
 })
 
 const schedule = require('node-schedule');
+
+app.get('/', (req, res) => {
+  res.set('Access-Control-Allow-Origin', '*');
+  res.set('Access-Control-Allow-Methods', '*');
+  res.set('Access-Control-Allow-Headers', '*');
+
+
+})
+
 
 
 app.post('/sms', (req, res) => {
