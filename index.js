@@ -96,23 +96,107 @@ app.get("/", (req, res) => {
   res.sendFile(__dirname + "/index.html");
 })
 
+const schedule = require('node-schedule');
+
 
 app.post('/sms', (req, res) => {
-  client.messages 
+  let time = {
+    alarmTime: req.body.alarmTime
+  }
+
+  console.log(time.alarmTime)
+
+  let TIME = '2021-08-06 ' + time.alarmTime + ':00';
+  console.log(TIME)
+
+  let someDate = new Date(TIME);
+
+  let obj = {
+    body: req.body.message,
+    messagingServiceSid: 'MGda7af18591f0c237763fb5cf2be37db5',        
+    to: `+1${req.body.number}`
+  };
+
+  schedule.scheduleJob(someDate, () => {
+    client.messages 
     .create({ 
-       body: req.body.message,
-       messagingServiceSid: 'MGda7af18591f0c237763fb5cf2be37db5',        
-       to: `+1${req.body.number}`,
-     }) 
+      body: obj.body,
+      messagingServiceSid: obj.messagingServiceSid,        
+      to: obj.to,
+    }) 
     .then(message => console.log("Message Sent!")) 
     .done();
+  });
 });
 
+
+
+
+
+/*
+let dateObj = new Date();
+
+console.log(dateObj.toTimeString());
+// dateObj.toTimeString() = "17:05:29 GMT-0700 (Pacific Daylight Time)"
+
+let i = 0;
+let myFunction = () => {
+  let i = 0;
+  if (i = 0) {
+    console.log('it works')
+    client.messages 
+    .create({ 
+      body: obj.body,
+      messagingServiceSid: obj.messagingServiceSid,        
+      to: obj.to,
+    }) 
+    .then(message => console.log("Message Sent!")) 
+    .done();
+  }
+};
+
+
+
+
+app.post('/sms', (req, res) => {
+  
+  let obj = {
+    body: req.body.message,
+    messagingServiceSid: 'MGda7af18591f0c237763fb5cf2be37db5',        
+    to: `+1${req.body.number}`
+  }
+
+  
+  setInterval (
+    () => {
+      if (1 < 5) {
+        client.messages
+        .create({ 
+          body: obj.body,
+          messagingServiceSid: obj.messagingServiceSid,        
+          to: obj.to,
+        }) 
+        .then(message => console.log("Message Sent!")) 
+        .done();
+
+        break;
+      }
+    },
+    1000
+  );
+  
+
+});
+
+.create({ 
+  body: obj.body,
+  messagingServiceSid: obj.messagingServiceSid,        
+  to: obj.to,
+}) 
+.then(message => console.log("Message Sent!")) 
+.done();
+*/
 
 app.listen(port, () => {
   console.log(`App is listening at http://localhost:${port}`);
 });
-
- 
-
-
